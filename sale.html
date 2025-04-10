@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroFresh - Fresh Fruits & Vegetables</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary: #22c55e;
+            --primary-dark: #16a34a;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #22c55e, #0ea5e9);
+        }
+         {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary: #22c55e;
+            --primary-dark: #16a34a;
+            --secondary: #0ea5e9;
+            --accent: #1ba23f;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #22c55e, #0ea5e9);
+        }
+
+        body {
+            background-color: var(--light);
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .become-seller-btn {
+            background: var(--accent);
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .become-seller-btn:before {
+            content: '\f54e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+        .cart-button {
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-button:hover {
+            background: var(--gradient);
+            color: white;
+            border: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-category {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">AgroFresh</div>
+            <div class="nav-links">
+                <a href="template.php">Home</a>
+                <a href="/become-seller" class="become-seller-btn">Become a Seller</a>
+                <button class="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">Cart (0)</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section-header">
+            <h2>Fresh Fruits & Vegetables</h2>
+            <p>Farm-fresh produce delivered to your doorstep</p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x200/?apple" alt="Fresh Apples" class="product-image">
+                <h3 class="product-title">Fresh Apples</h3>
+                <p class="product-price">₹120/kg</p>
+                <p class="product-description">Premium quality fresh apples, rich in nutrients and perfect for daily consumption.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x200/?orange" alt="Sweet Oranges" class="product-image">
+                <h3 class="product-title">Sweet Oranges</h3>
+                <p class="product-price">₹80/kg</p>
+                <p class="product-description">Juicy and sweet oranges, packed with Vitamin C and natural goodness.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x200/?tomato" alt="Fresh Tomatoes" class="product-image">
+                <h3 class="product-title">Fresh Tomatoes</h3>
+                <p class="product-price">₹40/kg</p>
+                <p class="product-description">Farm-fresh tomatoes, perfect for salads and cooking.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x200/?potato" alt="Fresh Potatoes" class="product-image">
+                <h3 class="product-title">Fresh Potatoes</h3>
+                <p class="product-price">₹30/kg</p>
+                <p class="product-description">Premium quality potatoes, perfect for all your cooking needs.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x200/?spinach" alt="Fresh Spinach" class="product-image">
+                <h3 class="product-title">Fresh Spinach</h3>
+                <p class="product-price">₹60/bunch</p>
+                <p class="product-description">Fresh spinach, rich in iron and vitamins.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x200/?carrot" alt="Fresh Carrots" class="product-image">
+                <h3 class="product-title">Fresh Carrots</h3>
+                <p class="product-price">₹50/kg</p>
+                <p class="product-description">Fresh carrots, perfect for salads and cooking.</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize cart array in localStorage if it doesn't exist
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        updateCartCount();
+
+        // Add click event listeners to all "Add to Cart" buttons
+        document.querySelectorAll('.add-to-cart').forEach((button, index) => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.product-card');
+                const product = {
+                    name: card.querySelector('.product-title').textContent,
+                    price: parseInt(card.querySelector('.product-price').textContent.replace('₹', '').replace('/kg', '')),
+                    image: card.querySelector('.product-image').src,
+                    quantity: 1
+                };
+
+                // Check if product already exists in cart
+                const existingProductIndex = cart.findIndex(item => item.name === product.name);
+                if (existingProductIndex > -1) {
+                    cart[existingProductIndex].quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+
+                // Save cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+
+                // Show success message
+                button.textContent = 'Added to Cart!';
+                setTimeout(() => {
+                    button.textContent = 'Add to Cart';
+                }, 2000);
+            });
+        });
+
+        // Update cart count in the header
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = `Cart (${cartCount})`;
+        }
+
+        // Add click event to cart button to navigate to cart page
+        document.querySelector('.cart-button').addEventListener('click', () => {
+            window.location.href = 'cart.html';
+        });
+    </script>
+</body>
+</html>
